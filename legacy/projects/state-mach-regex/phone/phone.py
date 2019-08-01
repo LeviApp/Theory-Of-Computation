@@ -6,9 +6,20 @@ line = input("Enter a phone number to validate or 'exit' when done. ")
 # TODO Define your regex
 
 
+
+pattern = re.compile(r'[(]?\b(\d{3})[-.) ]*?(\d{3})[-. ]*?(\d{4})\b')
+
+
+
 while line != "exit":
     # TODO Find matches
 
+    found = pattern.match(line)
+    try:
+        print(f'Area Code: {found.group(1)}\n Prefix: {found.group(2)}\n Suffix: {found.group(3)}')
+    
+    except:
+        print(f'Number not found! Please try again.')
     
     # TODO If no match found, print that no number was found
    
